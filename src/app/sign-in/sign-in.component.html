@@ -1,16 +1,47 @@
 <div class="container">
-  <form class="sign-in-form" #ngformsModule = "ngForm" (submit)="onSubmit(ngformsModule)">
+  <form class="sign-in-form" #ngformsModule="ngForm" (submit)="onSubmit(ngformsModule)">
     <h2>Sign in</h2>
     <div class="row-control">
       <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
-        <input matInput placeholder="Username" [(ngModel)]="userInfor.name" name="name"/>
+        <input
+        matInput
+        placeholder="Username"
+        [(ngModel)]="userInfor.name"
+        name="name"
+        required
+        minlength="6"
+        maxlength="32"
+        [pattern]="patterOfName"
+        #userName="ngModel">
+        <mat-error *ngIf="userName.touched&&!userName.valid">
+          <span *ngIf="userName.errors?.['required']">user name is required</span>
+          <span *ngIf="userName.errors?.['minlength']||userName.errors?.['maxlength']">length from 6 to 32
+            characters</span>
+          <span
+            *ngIf="!(userName.errors?.['minlength']||userName.errors?.['maxlength'])&& userName.errors?.['pattern']">value
+            is not true</span>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="row-control">
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input type="password" matInput placeholder="Password" [(ngModel)]="userInfor.password" name="password"/>
+        <input
+        type="password"
+        matInput
+        placeholder="Password"
+        [(ngModel)]="userInfor.password"
+        required name="password"
+        minlength="8"
+        maxlength="12"
+        [pattern]="patterOfPassW"
+        #passWord="ngModel">
+        <mat-error *ngIf="passWord.touched&&!passWord.valid">
+          <span *ngIf="passWord.errors?.['required']">pass word is required</span>
+          <span *ngIf="passWord.errors?.['minlength']||passWord.errors?.['maxlength']">length from 8 to 12 characters</span>
+          <span *ngIf="!(passWord.errors?.['minlength']||passWord.errors?.['maxlength']) && passWord.errors?.['pattern']">input is wrong</span>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="row-control">
@@ -22,10 +53,6 @@
   </form>
 </div>
 <pre>
-  {{ngformsModule.value|json}}
-  {{userInfor|json}}
+  {{userName.errors|json}}
+  {{passWord.errors|json}}
 </pre>
-<!-- <button mat-fab color="warn" aria-label="Example icon button with a home icon">
-  <mat-icon>home</mat-icon>
-</button> -->
-

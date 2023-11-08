@@ -7,11 +7,13 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {
+  patterOfName = /^[a-z]{6,32}$/i// chỉ gồm các ký tự từ a-z, 6 đến 32
+  patterOfPassW = /^(?=.*[!@#$%^&*]+)[a-z0-9!@#$%^&*]{6,32}$/;
   onSubmit(form: NgForm) {
     console.log(form)
   }
   userInfor = {
-    name: 'doan dat',
+    name: 'doandat',
     password:'datlogarit',
     checkRemember:true
   }
