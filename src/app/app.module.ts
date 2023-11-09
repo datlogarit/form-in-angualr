@@ -12,18 +12,24 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule, } from '@angular/material/button';
 import { MatIconModule} from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 const router: Routes = [
   {
-    path: 'sign-in',
+    path: 'template-drivent-form',
     component: SignInComponent
+  },
+  {
+    path:'reactiveForm',
+    component:ReactiveFormComponent
   }
 ]
 @NgModule({
   declarations: [
     AppComponent,
-    SignInComponent
+    SignInComponent,
+    ReactiveFormComponent
   ],
   imports: [
     RouterModule.forRoot(router),
@@ -35,7 +41,8 @@ const router: Routes = [
     MatFormFieldModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
   ],
   exports:[RouterModule],
   providers: [],
