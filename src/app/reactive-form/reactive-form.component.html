@@ -45,7 +45,7 @@
       <mat-checkbox formControlName="rememberMe">Remember me</mat-checkbox>
     </div>
     <div class="row-control row-actions">
-      <button mat-raised-button color="primary" type="submit">Sign in</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="signInForm.invalid">Sign in</button>
     </div>
     <pre>
       {{signInForm.value|json}}

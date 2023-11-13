@@ -14,6 +14,7 @@ import { MatButtonModule, } from '@angular/material/button';
 import { MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { Day37FromAsyncValidatorComponent } from './day37-from-async-validator/day37-from-async-validator.component';
 
 const router: Routes = [
   {
@@ -23,13 +24,18 @@ const router: Routes = [
   {
     path:'reactiveForm',
     component:ReactiveFormComponent
+  },
+  {
+    path:'FormAsync',
+    component:Day37FromAsyncValidatorComponent
   }
 ]
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    Day37FromAsyncValidatorComponent
   ],
   imports: [
     RouterModule.forRoot(router),
